@@ -139,7 +139,12 @@ a:hover { color: var(--color-accent-900); }
   overflow: hidden;
   justify-self: center;
 }
-.hero__photo img { width: 100%; height: 100%; object-fit: cover; object-position: top center; }
+.hero__photo img { 
+  width: 100%; 
+  height: 100%; 
+  object-fit: cover; 
+  object-position: top center; 
+}
 @media (min-width: 860px) {
   .hero__photo {
     aspect-ratio: auto;
