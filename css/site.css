@@ -186,7 +186,7 @@ a:hover { color: var(--color-accent-900); }
   width: 400px;
 }
 
-/* Case 01 — AIA AI support chatbot
+/* Case sections — shared layout for the case-01 / case-02 blocks
    ------------------------------------------------------------------ */
 
 .case-01 {
@@ -209,6 +209,14 @@ a:hover { color: var(--color-accent-900); }
   line-height: 30px;
   max-width: 160ch;
   margin: 24px 0 0;
+}
+/* Scan line — bolded one-sentence summary for skimmers, shared across all case sections */
+.case-scan {
+  font-size: 17px;
+  line-height: 28px;
+  font-weight: 700;
+  max-width: 90ch;
+  margin: 20px 0 0;
 }
 
 .case-grid {
