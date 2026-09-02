@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Angus Fisher — Product Manager</title>
+<link rel="stylesheet" href="css/design-system.css">
+<link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+
+<nav class="nav site-header">
+  <span class="nav-brand">Angus Fisher</span>
+  <a href="#case-01">Case 01</a>
+  <a href="#case-02">Case 02</a>
+  <a href="#approach">Approach</a>
+  <a href="#background">Background</a>
+  <a class="btn btn-primary btn-link" href="mailto:anguswfisher@gmail.com">Get in touch</a>
+</nav>
+
+<section class="hero">
+  <div class="hero__grid">
+    <div>
+      <h1 class="hero__title">
+        <span>Product manager.</span>
+        <span>I prototype the idea</span>
+        <span class="accent">before I lock the spec.</span>
+      </h1>
+      <p class="hero__lede">
+        Five years in B2B SaaS: support desk, then product analyst, then PM. I ship AI products end to end: the intent taxonomy, the knowledge structure the retrieval actually depends on, the working prototype, and the feedback loop that tells you whether any of it landed.
+      </p>
+      <p class="hero__note">
+        Looking for AI PM / AI product builder work at Series B AI-native companies. Second lane: construction &amp; AEC, and legal tech, domains where the documents are the product.
+      </p>
+      <div class="hero__actions">
+        <a class="btn btn-primary btn-link" href="https://www.linkedin.com/in/anguswfisher" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn btn-secondary btn-link" href="https://github.com/AngusFisher1" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn btn-ghost btn-link" href="mailto:anguswfisher@gmail.com">anguswfisher@gmail.com</a>
+      </div>
+    </div>
+    <div class="blueprint duotone hero__photo">
+      <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+      <img src="img/headshot.jpg" alt="Angus Fisher">
+    </div>
+  </div>
+</section>
+
+<section class="specsheet" aria-label="Spec sheet">
+  <div class="container specsheet__grid">
+    <div>
+      <p class="specsheet__label">Track</p>
+      <p class="specsheet__value">Support → Analyst → PM<br>5 years, B2B SaaS</p>
+    </div>
+    <div>
+      <p class="specsheet__label">AI tooling</p>
+      <p class="specsheet__value">Copilot Studio<br>Claude · Windsurf</p>
+    </div>
+    <div>
+      <p class="specsheet__label">Builds with</p>
+      <p class="specsheet__value">Python · TypeScript<br>React · SQL</p>
+    </div>
+    <div>
+      <p class="specsheet__label">Specs &amp; measures</p>
+      <p class="specsheet__value">Figma · Power BI<br>CS degree</p>
+    </div>
+  </div>
+</section>
+
+<section id="case-01" class="case-01">
+  <span class="eyebrow eyebrow--tight">Case 01 · internal AI product · Microsoft Copilot Studio</span>
+  <hr class="divider">
+  <h2 class="case__title">ACD Internal AI support chatbot</h2>
+  <p class="case__intro">
+    An internal support agent that answers the questions the documents already answered, and names the ones it must not touch.
+  </p>
+
+  <div class="case-grid">
+    <div class="blueprint case-card">
+      <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+      <h3 class="case-card__title">Problem</h3>
+      <p class="case-card__body">Tier 1 volume was answerable-by-document. The same forty questions arrived in a hundred phrasings (licensing, entitlements, which contract document applies), and agents were acting as the search interface for content that already existed.</p>
+    </div>
+    <div class="blueprint case-card">
+      <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+      <h3 class="case-card__title">My role</h3>
+      <p class="case-card__body">Product owner, end to end. I designed the intent taxonomy, ran the SME sessions that produced the knowledge sources, built and iterated the agent in Copilot Studio myself, and owned the post-launch feedback loop rather than handing it to support.</p>
+    </div>
+  </div>
+
+  <div class="case-approach">
+    <span class="eyebrow">Approach</span>
+    <hr class="divider divider--wide">
+    <div class="steps">
+      <div>
+        <p class="step__index">01</p>
+        <h4 class="step__title">Taxonomy from tickets, not org charts</h4>
+        <p class="step__body">I clustered a real ticket sample by what the resolution required, not by product area. Each intent got one owner and one source of truth, so an unanswered question always had an address.</p>
+      </div>
+      <div>
+        <p class="step__index">02</p>
+        <h4 class="step__title">Knowledge structured with SMEs</h4>
+        <p class="step__body">Authority documents were written for people, not retrieval. Working session by session with SMEs, we restructured them into scoped, retrievable sections with explicit boundaries, and wrote the refusal path for anything legal-adjacent.</p>
+      </div>
+      <div>
+        <p class="step__index">03</p>
+        <h4 class="step__title">A loop that changes something</h4>
+        <p class="step__body">In-conversation feedback plus unresolved-intent logging fed a weekly triage with exactly three outcomes: fix the source, extend the taxonomy, or route the topic to a human for good. Failures became a maintained backlog instead of a mystery.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="taxonomy">
+    <span class="eyebrow">Taxonomy, abridged</span>
+    <hr class="divider divider--narrow">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Intent cluster</th>
+          <th>Source of truth</th>
+          <th>Resolution path</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Licensing &amp; seat questions</td>
+          <td>Licensing policy set</td>
+          <td>Self-serve answer, cited</td>
+        </tr>
+        <tr>
+          <td>Which contract document applies</td>
+          <td>Document family guide</td>
+          <td>Guided answer, scope-bounded</td>
+        </tr>
+        <tr>
+          <td>Account &amp; entitlement</td>
+          <td>Support knowledge base</td>
+          <td>Self-serve; exception escalates</td>
+        </tr>
+        <tr>
+          <td>Legal interpretation of terms</td>
+          <td>None (by design)</td>
+          <td>Explicit refusal → human</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="blueprint outcome">
+    <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+    <span class="eyebrow">Outcome</span>
+    <p class="outcome__statement">Tier 1 dependency dropped on every intent the taxonomy covered. Conversations closed without an agent, and the intents it could not close were named, owned and dated instead of staying invisible.</p>
+  </div>
+</section>
+
+<section id="case-02" class="section-1200">
+  <span class="eyebrow">Case 02 · prototype · built with Claude Code &amp; Claude Design</span>
+  <hr class="divider">
+  <div class="beacon-grid">
+    <div>
+      <h2 class="beacon__title">Beacon</h2>
+      <p class="beacon__lede">A student learning dashboard where the three surfaces feed each other: the radar says what's weak, the cards say what to do next, the tutor does the teaching, and what happens in the tutor moves the radar.</p>
+      <p class="beacon__note">Built as a static HTML prototype so the loop could be argued about in a browser instead of a deck. Claude Code for the build, Claude Design for the interface: the same workflow I'd use to de-risk a spec on day three of discovery, not day thirty.</p>
+      <div class="beacon__actions">
+        <a class="btn btn-primary btn-link" href="https://angusfisher1.github.io/Educational_software_demo/" target="_blank" rel="noopener">Open the prototype</a>
+        <a class="btn btn-secondary btn-link" href="https://github.com/AngusFisher1/Educational_software_demo" target="_blank" rel="noopener">Repository</a>
+      </div>
+    </div>
+    <div class="beacon-loop">
+      <div class="blueprint beacon-card">
+        <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+        <p class="beacon-card__eyebrow">Signal</p>
+        <h4 class="beacon-card__title">Knowledge radar</h4>
+        <p class="beacon-card__body">Mastery per concept, visible at a glance. The one screen a student and a teacher can read the same way.</p>
+      </div>
+      <p class="beacon-loop__arrow">↓</p>
+      <div class="blueprint beacon-card">
+        <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+        <p class="beacon-card__eyebrow">Decision</p>
+        <h4 class="beacon-card__title">Next-best-action cards</h4>
+        <p class="beacon-card__body">One ranked list, three items, each with a stated reason. A dashboard that recommends is worth more than one that reports.</p>
+      </div>
+      <p class="beacon-loop__arrow">↓</p>
+      <div class="blueprint beacon-card">
+        <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+        <p class="beacon-card__eyebrow">Practice → back to signal</p>
+        <h4 class="beacon-card__title">Socratic AI tutor</h4>
+        <p class="beacon-card__body">Questions, not answers. The session's evidence updates the radar, which reorders the cards. The loop closes without a teacher in the middle of it.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="approach" class="approach">
+  <div class="container">
+    <span class="eyebrow">How I work</span>
+    <hr class="divider">
+    <h2 class="approach__title">AI tools are in the workflow, not on the slide</h2>
+    <div class="approach-grid">
+      <div>
+        <h4 class="approach-item__title">Prototype in the discovery week</h4>
+        <p class="approach-item__body">Claude Code and Windsurf get a clickable version of the argument in front of people while the requirements are still cheap to change. Beacon exists because a diagram of a closed loop convinces nobody.</p>
+      </div>
+      <div>
+        <h4 class="approach-item__title">Build the internal tool myself</h4>
+        <p class="approach-item__body">Copilot Studio, Python, SQL. If the thing that unblocks a team is an agent, a query or a dashboard, I'd rather ship it than write a ticket asking someone else to.</p>
+      </div>
+      <div>
+        <h4 class="approach-item__title">Write specs a model can read</h4>
+        <p class="approach-item__body">Explicit scope, explicit refusals, explicit success signal. The discipline that makes a Copilot Studio agent behave is the same discipline that makes a spec unambiguous to engineers.</p>
+      </div>
+      <div>
+        <h4 class="approach-item__title">Instrument before launch</h4>
+        <p class="approach-item__body">Coming up through support taught me that the failure log is the roadmap. I decide what I'll count, and where it lands weekly, before anything goes live.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="background" class="section-1200">
+  <span class="eyebrow">Background</span>
+  <hr class="divider">
+  <div class="background-grid">
+    <div>
+      <p class="bio__lede">I came into product through the support queue: five years of B2B SaaS, from frontline support to product analyst to PM. Computer science degree underneath it, which is why the technical conversation is a conversation and not a translation.</p>
+      <p class="bio__note">Before software, I coached track and field throwing events at elite and Olympic levels. That meant developing athletes over multi-year arcs, then calling technical corrections in real time on a competition day where the result is public and the margin for error is gone. Building something repeatable enough to hold up under that kind of scrutiny is its own discipline, learned long before I wrote a line of code.</p>
+    </div>
+    <div class="background-media">
+      <div class="blueprint duotone background-media__photo">
+        <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+        <img src="img/coaching.JPG" alt="Coaching a throws event at a USATF competition">
+      </div>
+      <div class="blueprint background-media__details">
+        <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+        <table class="table">
+          <tbody>
+            <tr>
+              <td>Now</td>
+              <td>Product Manager, B2B SaaS</td>
+            </tr>
+            <tr>
+              <td>Path</td>
+              <td>Support → Product Analyst → PM</td>
+            </tr>
+            <tr>
+              <td>Study</td>
+              <td>Computer Science</td>
+            </tr>
+            <tr>
+              <td>Domains</td>
+              <td>AI-native · Construction &amp; AEC · Legal tech</td>
+            </tr>
+            <tr>
+              <td>Prior</td>
+              <td>Elite throws coach, track and field (elite / Olympic level)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <h2 class="site-footer__title">Hiring for a product role? Let's talk specifics.</h2>
+    <div class="footer-links">
+      <div>
+        <p class="footer-links__label">Email</p>
+        <a class="footer-links__value" href="mailto:anguswfisher@gmail.com">anguswfisher@gmail.com</a>
+      </div>
+      <div>
+        <p class="footer-links__label">LinkedIn</p>
+        <a class="footer-links__value" href="https://www.linkedin.com/in/anguswfisher" target="_blank" rel="noopener">/in/anguswfisher</a>
+      </div>
+      <div>
+        <p class="footer-links__label">GitHub</p>
+        <a class="footer-links__value" href="https://github.com/AngusFisher1" target="_blank" rel="noopener">AngusFisher1</a>
+      </div>
+    </div>
+    
+  </div>
+</footer>
+
+</body>
+</html>
