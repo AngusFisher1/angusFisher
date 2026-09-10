@@ -186,19 +186,65 @@ a:hover { color: var(--color-accent-900); }
   max-width: 400px;
 }
 
-/* Spec sheet — light variant (quiet tools row; the proof band stays navy) */
-.specsheet--light {
+/* Toolkit — interactive capability cards (blueprint frame, hover lifts + accents) */
+.toolkit {
   background: color-mix(in srgb, var(--color-text) 3%, var(--color-bg));
-  color: var(--color-text);
   border-block: 1px solid var(--color-divider);
-  padding: clamp(26px, 3.2vw, 38px) 0;
+  padding: clamp(34px, 4vw, 56px) 0;
 }
-.specsheet--light .specsheet__label {
-  color: color-mix(in srgb, var(--color-text) 52%, transparent);
+.toolkit__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
 }
-.specsheet--light .specsheet__value {
+.toolkit-card {
+  padding: 22px 22px 20px;
+  background: var(--color-bg);
+  transition: transform .22s ease, border-color .22s ease, box-shadow .22s ease;
+}
+.toolkit-card:hover,
+.toolkit-card:focus-within {
+  transform: translateY(-4px);
+  border-color: var(--color-accent);
+  box-shadow: var(--shadow-md);
+}
+.toolkit-card:hover > .corner,
+.toolkit-card:focus-within > .corner { color: var(--color-accent); }
+.toolkit-card__label {
+  margin: 0 0 14px;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--color-accent-700);
+}
+.toolkit-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.chip {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
   color: var(--color-text);
-  font-size: 18px;
+  padding: 5px 11px;
+  border: 1px solid var(--color-divider);
+  background: color-mix(in srgb, var(--color-text) 3%, transparent);
+  transition: border-color .18s ease, background .18s ease, color .18s ease;
+}
+.toolkit-card:hover .chip,
+.toolkit-card:focus-within .chip {
+  border-color: color-mix(in srgb, var(--color-accent) 40%, var(--color-divider));
+}
+@media (prefers-reduced-motion: reduce) {
+  .toolkit-card { transition: border-color .22s ease, box-shadow .22s ease; }
+  .toolkit-card:hover,
+  .toolkit-card:focus-within { transform: none; }
 }
 
 /* Case sections — shared layout for the case-01 / case-02 blocks
