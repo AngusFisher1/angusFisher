@@ -183,7 +183,22 @@ a:hover { color: var(--color-accent-900); }
   line-height: 1.25;
   text-transform: uppercase;
   letter-spacing: 0.02em;
-  width: 400px;
+  max-width: 400px;
+}
+
+/* Spec sheet — light variant (quiet tools row; the proof band stays navy) */
+.specsheet--light {
+  background: color-mix(in srgb, var(--color-text) 3%, var(--color-bg));
+  color: var(--color-text);
+  border-block: 1px solid var(--color-divider);
+  padding: clamp(26px, 3.2vw, 38px) 0;
+}
+.specsheet--light .specsheet__label {
+  color: color-mix(in srgb, var(--color-text) 52%, transparent);
+}
+.specsheet--light .specsheet__value {
+  color: var(--color-text);
+  font-size: 18px;
 }
 
 /* Case sections — shared layout for the case-01 / case-02 blocks
@@ -218,6 +233,18 @@ a:hover { color: var(--color-accent-900); }
   max-width: 90ch;
   margin: 20px 0 0;
 }
+/* Meta row — role, under the eyebrow/title, shared across all case sections */
+.case-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 20px;
+  margin: 14px 0 0;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--color-text) 55%, transparent);
+}
+.case-meta strong { color: var(--color-text); font-weight: 600; }
 
 .case-grid {
   display: grid;

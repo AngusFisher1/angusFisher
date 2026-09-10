@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" fill="#f2f2f3"/>
+  <path d="M5 5h9M5 5v9" stroke="#416180" stroke-width="3" fill="none"/>
+  <path d="M59 5h-9M59 5v9" stroke="#416180" stroke-width="3" fill="none"/>
+  <path d="M5 59h9M5 59v-9" stroke="#416180" stroke-width="3" fill="none"/>
+  <path d="M59 59h-9M59 59v-9" stroke="#416180" stroke-width="3" fill="none"/>
+  <text x="32" y="43" font-family="Georgia, 'Times New Roman', serif" font-weight="700" font-size="30" text-anchor="middle" fill="#1d1f20">AF</text>
+</svg>
