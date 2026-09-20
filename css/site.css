@@ -341,14 +341,176 @@ section[id], article[id] { scroll-margin-top: 96px; }
   font-size: 13px;
   color: var(--color-accent);
 }
-.log__output {
+.log .log__output {
   margin: 0;
   font-size: 16px;
   line-height: 27px;
-  max-width: 70ch;
+  max-width: 100%;
   color: color-mix(in srgb, var(--color-text) 92%, transparent);
 }
 .log__output strong { color: var(--color-accent); }
+
+.deploy-card__links { display: flex; flex-wrap: wrap; gap: 12px; margin: 20px 0 0; }
+
+/* Case body / diagram split — text stays a readable column, the diagram
+   fills the space that would otherwise sit empty beside it. */
+.deploy-card__split {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 360px);
+  gap: 32px;
+  align-items: start;
+}
+@media (max-width: 860px) {
+  .deploy-card__split { grid-template-columns: 1fr; }
+}
+.deploy-card__body { min-width: 0; }
+
+/* Diagrams — flat, self-drawing panels for each case's empty column.
+   Elements start paused; site.js flips them to running when the panel
+   scrolls into view. prefers-reduced-motion disables all of it below. */
+@keyframes dgGrow { from { width: 0; } to { width: var(--w, 100%); } }
+@keyframes dgFade { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+@keyframes dgLine { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+@keyframes dgType { from { width: 0; } to { width: 100%; } }
+@keyframes dgTravel { 0% { top: -4px; opacity: 0; } 12% { opacity: 1; } 88% { opacity: 1; } 100% { top: 100%; opacity: 0; } }
+@keyframes dgSlide { 0% { left: -6px; opacity: 0; } 15% { opacity: 1; } 85% { opacity: 1; } 100% { left: 100%; opacity: 0; } }
+@keyframes dgShine { 0% { transform: translateX(-120%); } 55%, 100% { transform: translateX(320%); } }
+@keyframes dgSweep { 0% { transform: translateY(-40px); opacity: 0; } 8% { opacity: .5; } 60% { opacity: 0; } 100% { transform: translateY(460px); opacity: 0; } }
+@keyframes dgPulse { 0%, 100% { opacity: .35; } 50% { opacity: 1; } }
+@keyframes dgGlow { 0%, 100% { box-shadow: 0 0 0 0 transparent; } 50% { box-shadow: 0 0 18px -4px color-mix(in srgb, var(--color-accent) 45%, transparent); } }
+@media (prefers-reduced-motion: reduce) {
+  .diagram-panel [data-anim], .diagram-panel [data-loop] { animation: none !important; }
+  .diagram-panel [data-loop] { opacity: 0 !important; }
+}
+
+.diagram-panel {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--color-divider);
+  background: var(--color-surface-2);
+  border-radius: 6px;
+  padding: 22px;
+  font-family: var(--font-mono);
+}
+.diagram-panel__sweep {
+  position: absolute; left: 0; right: 0; top: 0; height: 40px;
+  background: linear-gradient(180deg, transparent, var(--color-accent-100));
+  pointer-events: none;
+  animation: dgSweep 1.6s .1s ease-out both paused;
+}
+.diagram-panel__head {
+  display: flex; justify-content: space-between; align-items: baseline;
+  margin-bottom: 22px;
+}
+.diagram-panel__label { font-size: 10px; letter-spacing: .16em; color: var(--color-accent); }
+.diagram-panel__fig { font-size: 10px; letter-spacing: .12em; color: color-mix(in srgb, var(--color-text) 40%, transparent); }
+.diagram-caption {
+  margin: 0; font-size: 11px; line-height: 1.7;
+  color: color-mix(in srgb, var(--color-text) 40%, transparent);
+  animation: dgFade .6s .8s both paused;
+}
+
+/* bars (case 01) */
+.diagram-bars { display: flex; flex-direction: column; gap: 20px; }
+.diagram-bar-group { display: flex; flex-direction: column; gap: 9px; }
+.diagram-bar-row { display: flex; justify-content: space-between; font-size: 11px; color: color-mix(in srgb, var(--color-text) 60%, transparent); }
+.diagram-bar-row .baseline { color: color-mix(in srgb, var(--color-text) 40%, transparent); }
+.diagram-bar-row strong { color: var(--color-accent); font-weight: 700; }
+.diagram-bar-track { position: relative; height: 10px; background: color-mix(in srgb, var(--color-text) 8%, transparent); border-radius: 2px; overflow: hidden; }
+.diagram-bar-fill { width: 0; height: 100%; animation: dgGrow .9s cubic-bezier(.16,.84,.3,1) both paused; }
+.diagram-bar-fill--base { background: color-mix(in srgb, var(--color-text) 25%, transparent); }
+.diagram-bar-fill--accent { background: var(--color-accent); }
+.diagram-bar-shine {
+  position: absolute; inset: 0; width: 28%;
+  background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--color-text) 28%, transparent), transparent);
+  animation: dgShine 4.5s ease-in-out infinite paused;
+}
+.diagram-bar-divider { height: 1px; background: var(--color-divider); }
+
+/* flow (cases 02, 04) */
+.diagram-flow { display: flex; flex-direction: column; gap: 0; }
+.diagram-node {
+  border: 1px solid color-mix(in srgb, var(--color-text) 18%, transparent);
+  border-radius: 4px; padding: 12px 14px; font-size: 12px;
+  color: color-mix(in srgb, var(--color-text) 85%, transparent);
+  animation: dgFade .5s both paused;
+}
+.diagram-node .sub { color: color-mix(in srgb, var(--color-text) 40%, transparent); }
+.diagram-node--accent {
+  border-color: var(--color-accent);
+  background: var(--color-accent-100);
+  animation: dgFade .5s .3s both paused, dgGlow 5s 1.6s ease-in-out infinite paused;
+}
+.diagram-node__title { font-size: 12px; color: var(--color-text); margin-bottom: 10px; }
+.diagram-node__tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.diagram-node__lines { display: flex; flex-direction: column; gap: 5px; font-size: 10px; color: var(--color-accent); }
+.diagram-node__lines span { overflow: hidden; white-space: nowrap; animation: dgType .4s steps(24) both paused; }
+.diagram-tag {
+  font-size: 10px; color: var(--color-accent);
+  border: 1px solid color-mix(in srgb, var(--color-accent) 35%, transparent);
+  border-radius: 3px; padding: 3px 7px;
+  animation: dgPulse 3.6s ease-in-out infinite paused;
+}
+.diagram-connector { position: relative; margin-left: 22px; width: 1px; height: 20px; }
+.diagram-connector__line {
+  width: 1px; height: 100%; background: color-mix(in srgb, var(--color-text) 18%, transparent);
+  transform-origin: top; animation: dgLine .3s both paused;
+}
+.diagram-connector__dot {
+  position: absolute; left: -1.5px; width: 4px; height: 4px; border-radius: 50%;
+  background: var(--color-accent); box-shadow: 0 0 6px var(--color-accent);
+  animation: dgTravel 2.4s linear infinite paused;
+}
+.diagram-cut {
+  margin-top: 16px;
+  border: 1px dashed color-mix(in srgb, var(--color-text) 22%, transparent);
+  border-radius: 4px; padding: 10px 14px; font-size: 11px;
+  color: color-mix(in srgb, var(--color-text) 48%, transparent);
+  animation: dgFade .5s .75s both paused;
+}
+.diagram-cut strong { color: color-mix(in srgb, var(--color-text) 60%, transparent); font-weight: 500; }
+.diagram-flags { display: flex; gap: 8px; flex-wrap: wrap; }
+.diagram-flag {
+  font-size: 10px; color: color-mix(in srgb, var(--color-text) 85%, transparent);
+  border: 1px solid color-mix(in srgb, var(--color-text) 18%, transparent);
+  border-radius: 3px; padding: 5px 9px;
+  animation: dgFade .5s both paused;
+}
+
+/* routing grid (case 03) */
+.diagram-route {
+  display: grid; grid-template-columns: 1fr 34px 1fr;
+  gap: 10px 6px; align-items: center; font-size: 11px;
+}
+.diagram-route__header { color: color-mix(in srgb, var(--color-text) 40%, transparent); letter-spacing: .1em; }
+.diagram-route-cell {
+  border: 1px solid color-mix(in srgb, var(--color-text) 18%, transparent);
+  border-radius: 3px; padding: 9px 11px;
+  color: color-mix(in srgb, var(--color-text) 85%, transparent);
+  overflow: hidden; white-space: nowrap;
+  animation: dgType .35s steps(16) both paused;
+}
+.diagram-route-cell--accent {
+  border-color: color-mix(in srgb, var(--color-accent) 35%, transparent);
+  color: var(--color-accent);
+  background: var(--color-accent-100);
+}
+.diagram-route-cell--dashed {
+  border-style: dashed;
+  border-color: color-mix(in srgb, var(--color-text) 24%, transparent);
+  color: color-mix(in srgb, var(--color-text) 60%, transparent);
+}
+.diagram-route-connector { position: relative; height: 1px; background: color-mix(in srgb, var(--color-text) 18%, transparent); }
+.diagram-route-connector--dim { background: color-mix(in srgb, var(--color-text) 12%, transparent); }
+.diagram-route-connector__dot {
+  position: absolute; top: -1.5px; width: 4px; height: 4px; border-radius: 50%;
+  background: var(--color-accent); box-shadow: 0 0 6px var(--color-accent);
+  animation: dgSlide 2.8s linear infinite paused;
+}
+.diagram-route-connector__dot--dim {
+  background: color-mix(in srgb, var(--color-text) 55%, transparent);
+  box-shadow: none;
+}
 
 .taxonomy { margin: 0 0 20px; }
 .table-scroll { overflow-x: auto; border: 1px solid var(--color-divider); border-radius: 4px; }

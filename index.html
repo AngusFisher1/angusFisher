@@ -4,18 +4,18 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" type="image/svg+xml" href="img/favicon.svg">
-<title>Angus Fisher, Forward Deployed PM</title>
-<meta name="description" content="Forward deployed product manager shipping AI products in domains where the documents are the product.">
+<title>Angus Fisher, Product Manager</title>
+<meta name="description" content="Product manager who ships AI products end to end: intent taxonomy, knowledge structure, working prototype, and the feedback loop that tells you whether it landed.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://angusfisher1.github.io/angusFisher/">
-<meta property="og:title" content="Angus Fisher, Forward Deployed PM">
-<meta property="og:description" content="Forward deployed product manager shipping AI products in domains where the documents are the product.">
+<meta property="og:title" content="Angus Fisher, Product Manager">
+<meta property="og:description" content="Product manager who ships AI products end to end: intent taxonomy, knowledge structure, working prototype, and the feedback loop that tells you whether it landed.">
 <meta property="og:image" content="https://angusfisher1.github.io/angusFisher/img/og-card.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Angus Fisher, Forward Deployed PM">
-<meta name="twitter:description" content="Forward deployed product manager shipping AI products in domains where the documents are the product.">
+<meta name="twitter:title" content="Angus Fisher, Product Manager">
+<meta name="twitter:description" content="Product manager who ships AI products end to end: intent taxonomy, knowledge structure, working prototype, and the feedback loop that tells you whether it landed.">
 <meta name="twitter:image" content="https://angusfisher1.github.io/angusFisher/img/og-card.jpg">
 <link rel="stylesheet" href="css/design-system.css">
 <link rel="stylesheet" href="css/site.css">
@@ -27,7 +27,9 @@
   <span class="nav-brand">Angus Fisher</span>
   <div class="nav-links">
     <a href="#case-pay-app" data-nav>Pay applications</a>
+    <a href="#case-doc-intelligence" data-nav>Document extraction</a>
     <a href="#case-support-agent" data-nav>Support agent</a>
+    <a href="#case-paysimple" data-nav>PaySimple</a>
     <a href="#beacon" data-nav>Beacon</a>
     <a href="#how-i-work" data-nav>How I work</a>
     <a href="#background" data-nav>Background</a>
@@ -39,12 +41,12 @@
 <section class="hero">
   <div class="hero__grid">
     <div>
-      <p class="hero__badge">Forward Deployed &middot; AI Products</p>
+      <p class="hero__badge">AI Products</p>
       <h1 class="hero__title">
-        <span>I embed until it ships.</span>
+        <span>I prototype the idea before I lock the spec.</span>
       </h1>
       <p class="hero__lede">
-        Five years in B2B SaaS: support, then analyst, then PM. I embed with the problem and ship AI products for AI-native teams, and for construction, AEC, and legal tech, where the documents are the product.
+        Five years in B2B SaaS: support, then analyst, then PM. I ship AI products end to end for AI-native teams, and for construction, AEC, and legal tech, where the documents are the product.
       </p>
       <div class="hero__actions">
         <a class="btn btn-primary btn-link" href="https://angusfisher1.github.io/beacon/" target="_blank" rel="noopener">Open the Beacon prototype</a>
@@ -56,6 +58,8 @@
         <span aria-hidden="true">·</span>
         <a href="https://github.com/AngusFisher1" target="_blank" rel="noopener">GitHub</a>
         <span aria-hidden="true">·</span>
+        <a href="https://github.com/anguswfisher/paysimple" target="_blank" rel="noopener">PaySimple code</a>
+        <span aria-hidden="true">·</span>
         <a href="mailto:anguswfisher@gmail.com">Email</a>
       </p>
     </div>
@@ -65,9 +69,12 @@
   </div>
 </section>
 
+<!-- TODO: confirm the exact comparison window (per month, per release, per quarter)
+     and the system the incident counts came from, then name the window in the
+     outcome paragraph instead of "equivalent periods". -->
 <p class="status-line container">
   <span class="status-dot" aria-hidden="true"></span>
-  Customer incidents fell <strong class="count-up" data-target="92" data-suffix="%">0%</strong> after the <a href="#case-pay-app">pay application rebuild</a>.
+  Incidents on the pay application calculation flow fell <strong class="count-up" data-target="92" data-suffix="%">92%</strong> after the <a href="#case-pay-app">rebuild</a>, and input efficiency rose 32% over the same period.
 </p>
 
 <section id="case-pay-app" class="deploy-card">
@@ -78,24 +85,113 @@
   <h2 class="deploy-card__title">Pay application rebuild</h2>
   <p class="deploy-card__meta">
     <span>Role: <strong>Owner, end to end</strong></span>
-    <span>Outcome: <strong>-92% incidents &middot; +32% input speed</strong></span>
+    <span>Outcome: <strong>-92% incidents on that flow &middot; +32% input speed</strong></span>
   </p>
 
-  <details class="log">
-    <summary>Problem</summary>
-    <p>Pay applications move money between parties on a construction project, and the calculation logic behind them was producing customer-facing errors. The input flow was slow enough that people made mistakes upstream of the math. I led the rebuild end to end and instrumented both incident volume and input efficiency before shipping, so I'd know whether the fix actually worked.</p>
-  </details>
+  <div class="deploy-card__split">
+    <div class="deploy-card__body">
+      <details class="log">
+        <summary>Problem</summary>
+        <p>Pay applications move money between parties on a construction project, and the calculation logic behind them was producing customer-facing errors. The input flow was slow enough that people made mistakes upstream of the math. I led the rebuild end to end and instrumented both incident volume and input efficiency before shipping, so I'd know whether the fix actually worked.</p>
+      </details>
 
-  <div class="log log--out">
-    <p class="log__prompt">Outcome</p>
-    <p class="log__output">Incidents fell <strong>92%</strong>. Input efficiency improved <strong>32%</strong>. I tracked both deliberately: incident volume alone can drop for the wrong reason, like people quietly abandoning the workflow.</p>
+      <div class="log log--out">
+        <p class="log__prompt">Outcome</p>
+        <p class="log__output">Customer-reported incidents tagged to the calculation flow fell <strong>92%</strong> comparing equivalent periods before and after release. Input efficiency improved <strong>32%</strong> over the same window. I tracked both on purpose, because incident volume on its own falls just as easily when people quietly abandon a workflow, and a defect count with no usage number next to it does not tell you which one happened.</p>
+      </div>
+    </div>
+
+    <div class="diagram-panel">
+      <div class="diagram-panel__sweep" data-anim></div>
+      <div class="diagram-panel__head">
+        <span class="diagram-panel__label">Before / after</span>
+        <span class="diagram-panel__fig">fig.01</span>
+      </div>
+      <div class="diagram-bars">
+        <div class="diagram-bar-group">
+          <div class="diagram-bar-row"><span>incidents &middot; before</span><span class="baseline">baseline</span></div>
+          <div class="diagram-bar-track"><div class="diagram-bar-fill diagram-bar-fill--base" data-anim style="--w:100%"></div></div>
+          <div class="diagram-bar-row"><span>incidents &middot; after</span><strong data-count data-to="-92" data-prefix="&minus;" data-suffix="%">&minus;92%</strong></div>
+          <div class="diagram-bar-track">
+            <div class="diagram-bar-fill diagram-bar-fill--accent" data-anim style="--w:8%"></div>
+            <div class="diagram-bar-shine" data-loop></div>
+          </div>
+        </div>
+        <div class="diagram-bar-divider"></div>
+        <div class="diagram-bar-group">
+          <div class="diagram-bar-row"><span>input speed &middot; before</span><span class="baseline">baseline</span></div>
+          <div class="diagram-bar-track"><div class="diagram-bar-fill diagram-bar-fill--base" data-anim style="--w:76%"></div></div>
+          <div class="diagram-bar-row"><span>input speed &middot; after</span><strong data-count data-to="32" data-prefix="+" data-suffix="%">+32%</strong></div>
+          <div class="diagram-bar-track">
+            <div class="diagram-bar-fill diagram-bar-fill--accent" data-anim style="--w:100%"></div>
+            <div class="diagram-bar-shine" data-loop></div>
+          </div>
+        </div>
+        <p class="diagram-caption" data-anim>Both tracked on purpose. Incident volume alone falls when a workflow is abandoned.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="case-doc-intelligence" class="deploy-card">
+  <div class="deploy-card__head">
+    <span class="badge badge--shipped">● Shipped</span>
+    <span class="deploy-card__id">Case 02</span>
+  </div>
+  <h2 class="deploy-card__title">Document extraction for migration</h2>
+  <p class="deploy-card__meta">
+    <span>Role: <strong>Owner, end to end</strong></span>
+    <span>Context: <strong>production AI, regulated document domain</strong></span>
+  </p>
+
+  <div class="deploy-card__split">
+    <div class="deploy-card__body">
+      <details class="log">
+        <summary>Problem</summary>
+        <p>Finalized PDFs in our legacy product stored no structured field values. That did not make migration slow, it made it impossible: a customer moving to the newer platform mid-project had to re-key everything by hand, so most of them refused to move at all. I wrote the business case, evaluated OCR and custom PDF parsing against trained extraction models, and chose Azure Document Intelligence because OCR alone could not hold accuracy on documents where the numbers matter financially.</p>
+      </details>
+
+      <div class="log log--out">
+        <p class="log__prompt">Outcome</p>
+        <p class="log__output">A capability that was previously impossible shipped to production. I set the model strategy, one trained model per form family rather than one generalized model, on accuracy and maintainability grounds, and owned model promotion across environments, feature-flag rollout, and QA validation. The decision I would defend hardest is a cut: project team fields extracted inconsistently because a model trained on narrow layouts degrades when the layout drifts, so I removed them from extraction and left them user-editable. More training was not going to buy the customer anything they could feel.</p>
+      </div>
+    </div>
+
+    <div class="diagram-panel">
+      <div class="diagram-panel__sweep" data-anim></div>
+      <div class="diagram-panel__head">
+        <span class="diagram-panel__label">Extraction pipeline</span>
+        <span class="diagram-panel__fig">fig.02</span>
+      </div>
+      <div class="diagram-flow">
+        <div class="diagram-node" data-anim>legacy PDF <span class="sub">&middot; no stored field values</span></div>
+        <div class="diagram-connector">
+          <div class="diagram-connector__line" data-anim></div>
+          <div class="diagram-connector__dot" data-loop></div>
+        </div>
+        <div class="diagram-node diagram-node--accent" data-anim>
+          <div class="diagram-node__title">Azure Document Intelligence</div>
+          <div class="diagram-node__tags">
+            <span class="diagram-tag" data-loop>model &middot; form family A</span>
+            <span class="diagram-tag" data-loop>B</span>
+            <span class="diagram-tag" data-loop>C</span>
+          </div>
+        </div>
+        <div class="diagram-connector">
+          <div class="diagram-connector__line" data-anim></div>
+          <div class="diagram-connector__dot" data-loop></div>
+        </div>
+        <div class="diagram-node" data-anim>structured fields <span class="sub">&rarr; new platform</span></div>
+        <div class="diagram-cut" data-anim><strong>cut:</strong> project team fields, left user-editable</div>
+      </div>
+    </div>
   </div>
 </section>
 
 <section id="case-support-agent" class="deploy-card">
   <div class="deploy-card__head">
     <span class="badge badge--internal">● Internal</span>
-    <span class="deploy-card__id">Case 02</span>
+    <span class="deploy-card__id">Case 03</span>
   </div>
   <h2 class="deploy-card__title">Internal AI support agent</h2>
   <p class="deploy-card__meta">
@@ -119,14 +215,115 @@
     </div>
   </div>
 
-  <details class="log">
-    <summary>Problem</summary>
-    <p>Support agents were the search interface for questions the documentation already answered. The same forty or so questions arrived in a hundred phrasings, and every repeat pulled a subject matter expert away from work only they could do. I clustered a real ticket sample by what the resolution actually required, wrote the refusal path for anything needing legal interpretation, and ran a weekly triage on what the taxonomy didn't yet cover.</p>
-  </details>
+  <div class="deploy-card__split">
+    <div class="deploy-card__body">
+      <details class="log">
+        <summary>Problem</summary>
+        <p>Support agents were the search interface for questions the documentation already answered. The same forty or so questions arrived in a hundred phrasings, and every repeat pulled a subject matter expert away from work only they could do. I clustered a real ticket sample by what the resolution actually required, wrote the refusal path for anything needing legal interpretation, and ran a weekly triage on what the taxonomy didn't yet cover.</p>
+      </details>
 
-  <div class="log log--out">
-    <p class="log__prompt">Outcome</p>
-    <p class="log__output">No shareable numbers on this one. What matters more: an agent that's confidently wrong costs more than one that defers. Before launch, I wanted "correct" defined, and every refusal written as deliberately as every answer.</p>
+      <div class="log log--out">
+        <p class="log__prompt">Outcome</p>
+        <p class="log__output">No shareable numbers on this one. What matters more: an agent that's confidently wrong costs more than one that defers. Before launch, I wanted "correct" defined, and every refusal written as deliberately as every answer.</p>
+      </div>
+    </div>
+
+    <div class="diagram-panel">
+      <div class="diagram-panel__sweep" data-anim></div>
+      <div class="diagram-panel__head">
+        <span class="diagram-panel__label">Intent routing</span>
+        <span class="diagram-panel__fig">fig.03</span>
+      </div>
+      <div class="diagram-route">
+        <span class="diagram-route__header">Intent</span>
+        <span></span>
+        <span class="diagram-route__header">Resolution path</span>
+
+        <div class="diagram-route-cell" data-anim>how-to</div>
+        <div class="diagram-route-connector"><div class="diagram-route-connector__dot" data-loop></div></div>
+        <div class="diagram-route-cell diagram-route-cell--accent" data-anim>answer from docs</div>
+
+        <div class="diagram-route-cell" data-anim>config / settings</div>
+        <div class="diagram-route-connector"><div class="diagram-route-connector__dot" data-loop></div></div>
+        <div class="diagram-route-cell diagram-route-cell--accent" data-anim>answer from docs</div>
+
+        <div class="diagram-route-cell" data-anim>account / billing</div>
+        <div class="diagram-route-connector diagram-route-connector--dim"><div class="diagram-route-connector__dot diagram-route-connector__dot--dim" data-loop></div></div>
+        <div class="diagram-route-cell diagram-route-cell--dashed" data-anim>defer to human</div>
+
+        <div class="diagram-route-cell" data-anim>unmatched</div>
+        <div class="diagram-route-connector diagram-route-connector--dim"><div class="diagram-route-connector__dot diagram-route-connector__dot--dim" data-loop></div></div>
+        <div class="diagram-route-cell diagram-route-cell--dashed" data-anim>defer to human</div>
+      </div>
+      <p class="diagram-caption" data-anim>No path answers without a source. Deferral is a designed outcome, not a failure state.</p>
+    </div>
+  </div>
+</section>
+
+<section id="case-paysimple" class="deploy-card">
+  <div class="deploy-card__head">
+    <span class="badge badge--demo">● Demo</span>
+    <span class="deploy-card__id">Case 04</span>
+  </div>
+  <h2 class="deploy-card__title">PaySimple</h2>
+  <p class="deploy-card__meta">
+    <span>Role: <strong>Solo build</strong></span>
+    <span>Stack: <strong>Next.js 14, TypeScript, Claude API (structured outputs), Supabase (row-level security), Vercel</strong></span>
+  </p>
+
+  <div class="deploy-card__split">
+    <div class="deploy-card__body">
+      <details class="log">
+        <summary>Problem</summary>
+        <p>Contractors pull payment terms out of contracts by hand, rebuild the schedule in a spreadsheet, and carry compliance risk they can't easily see: retainage release conditions, pay-when-paid versus pay-if-paid clauses, prompt payment law that varies by state. Generic payment software doesn't speak that language, because it wasn't built for construction contracts specifically.</p>
+        <p>Solo build, product and engineering both. The pipeline reads an uploaded contract, identifies the agreement type, and extracts payment terms and key dates using the Claude API, not a template matcher or a regex pass over the PDF text. Extracted terms feed a payment schedule that accounts for progress draws, retainage, and lien waivers, then flow into a pay application workflow with line-item management and the calculations that go with it. A compliance layer checks for the clauses that actually cause payment disputes: pay-when-paid versus pay-if-paid language, retainage triggers, completion dependencies, and state prompt payment law.</p>
+      </details>
+
+      <div class="log log--out">
+        <p class="log__prompt">Outcome</p>
+        <p class="log__output">This is a seeded demo, not a shipped product. It's seeded with a full sample contractor's book of work rather than real data, so you can click through a contract, a schedule, and a pay application without creating an account. The extraction pipeline, the schedule logic, and the compliance checks are all real and running; the audit trail around corrected drafts is what took the longest to get right.</p>
+      </div>
+
+      <p class="deploy-card__links">
+        <a class="btn btn-secondary btn-link" href="https://anguswfisher.github.io/paysimple/" target="_blank" rel="noopener">View the build</a>
+        <a class="btn btn-secondary btn-link" href="https://github.com/anguswfisher/paysimple" target="_blank" rel="noopener">Repository (github.com/anguswfisher)</a>
+      </p>
+    </div>
+
+    <div class="diagram-panel">
+      <div class="diagram-panel__sweep" data-anim></div>
+      <div class="diagram-panel__head">
+        <span class="diagram-panel__label">Contract &rarr; schedule</span>
+        <span class="diagram-panel__fig">fig.04</span>
+      </div>
+      <div class="diagram-flow">
+        <div class="diagram-node" data-anim>contract <span class="sub">&middot; PDF</span></div>
+        <div class="diagram-connector">
+          <div class="diagram-connector__line" data-anim></div>
+          <div class="diagram-connector__dot" data-loop></div>
+        </div>
+        <div class="diagram-node diagram-node--accent" data-anim>
+          <div class="diagram-node__title">extracted terms <span class="sub">&middot; structured output</span></div>
+          <div class="diagram-node__lines">
+            <span data-anim>retainage 10% &middot; release on substantial completion</span>
+            <span data-anim>pay-when-paid &middot; 30 days</span>
+            <span data-anim>conditional lien waiver required</span>
+          </div>
+        </div>
+        <div class="diagram-connector">
+          <div class="diagram-connector__line" data-anim></div>
+          <div class="diagram-connector__dot" data-loop></div>
+        </div>
+        <div class="diagram-node" data-anim>payment schedule <span class="sub">&middot; generated</span></div>
+        <div class="diagram-connector">
+          <div class="diagram-connector__line" data-anim></div>
+        </div>
+        <div class="diagram-flags">
+          <span class="diagram-flag" data-anim>risk flag &middot; waiver missing</span>
+          <span class="diagram-flag" data-anim>risk flag &middot; retainage unreleased</span>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -134,15 +331,6 @@
   <span class="eyebrow">Also built</span>
   <hr class="divider">
   <div class="also-built__grid">
-    <article class="also-built__item">
-      <img class="also-built__image" src="img/paysimple-thumb.jpg" alt="PaySimple dashboard showing contract value, billed to date, compliance score, and open risk flags" width="900" height="562" loading="lazy">
-      <div class="also-built__body">
-        <p class="also-built__head"><span class="badge badge--demo">● Demo</span></p>
-        <h3 class="also-built__title">PaySimple</h3>
-        <p>A solo build that reads construction contracts and turns payment terms into a schedule, a pay application, and a compliance check. Seeded demo, not a shipped product.</p>
-        <a href="https://anguswfisher.github.io/paysimple/" target="_blank" rel="noopener">View the build →</a>
-      </div>
-    </article>
     <article class="also-built__item" id="beacon">
       <div class="also-built__body also-built__body--no-image">
         <p class="also-built__head"><span class="badge badge--live">● Live</span></p>
@@ -206,7 +394,7 @@
 <footer class="site-footer">
   <div class="container">
     <h2 class="site-footer__title">Hiring for a product role? Let's talk specifics.</h2>
-    <p class="site-footer__note">Looking for AI PM roles at Series B AI-native companies, and at construction, AEC, and legal tech teams where documents are the product. The best first conversation starts with what you're building and what's in the way.</p>
+    <p class="site-footer__note">Looking for AI PM roles at Series B to D AI-native companies, and at construction, AEC, and legal tech teams where documents are the product. The best first conversation starts with what you're building and what's in the way.</p>
     <a class="btn btn-primary btn-link footer-email" href="mailto:anguswfisher@gmail.com">anguswfisher@gmail.com</a>
     <p class="footer-links--text">
       <a href="assets/resume.pdf" target="_blank" rel="noopener">Resume (PDF)</a>
@@ -214,6 +402,8 @@
       <a href="https://www.linkedin.com/in/anguswfisher" target="_blank" rel="noopener">LinkedIn</a>
       <span aria-hidden="true">·</span>
       <a href="https://github.com/AngusFisher1" target="_blank" rel="noopener">GitHub</a>
+      <span aria-hidden="true">·</span>
+      <a href="https://github.com/anguswfisher/paysimple" target="_blank" rel="noopener">PaySimple code</a>
     </p>
   </div>
 </footer>
@@ -223,14 +413,17 @@
     <input class="cmdk__input" id="cmdk-input" type="text" placeholder="Type a command or search…" autocomplete="off" spellcheck="false">
     <ul class="cmdk__list" id="cmdk-list">
       <li><button type="button" data-href="#case-pay-app">Go to: Pay application rebuild</button></li>
+      <li><button type="button" data-href="#case-doc-intelligence">Go to: Document extraction for migration</button></li>
       <li><button type="button" data-href="#case-support-agent">Go to: Internal support agent</button></li>
-      <li><button type="button" data-href="#beacon">Go to: Also built <span class="text-muted">Beacon / PaySimple</span></button></li>
+      <li><button type="button" data-href="#case-paysimple">Go to: PaySimple</button></li>
+      <li><button type="button" data-href="#beacon">Go to: Beacon (also built)</button></li>
       <li><button type="button" data-href="#how-i-work">Go to: How I work</button></li>
       <li><button type="button" data-href="#background">Go to: Background</button></li>
       <li><button type="button" data-href="https://angusfisher1.github.io/beacon/" data-external="1">Open: Beacon (live demo) <span class="text-muted">↗</span></button></li>
       <li><button type="button" data-href="assets/resume.pdf" data-external="1">Open: Resume (PDF) <span class="text-muted">↗</span></button></li>
       <li><button type="button" data-href="https://www.linkedin.com/in/anguswfisher" data-external="1">Open: LinkedIn <span class="text-muted">↗</span></button></li>
       <li><button type="button" data-href="https://github.com/AngusFisher1" data-external="1">Open: GitHub <span class="text-muted">↗</span></button></li>
+      <li><button type="button" data-href="https://github.com/anguswfisher/paysimple" data-external="1">Open: PaySimple repository <span class="text-muted">↗</span></button></li>
       <li><button type="button" data-href="mailto:anguswfisher@gmail.com" data-external="1">Open: Email <span class="text-muted">↗</span></button></li>
     </ul>
   </div>

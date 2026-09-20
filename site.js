@@ -39,14 +39,23 @@
     update();
   })();
 
-  /* ---------- count-up ---------- */
+  /* ---------- count-up ----------
+     The HTML already contains the real, final value (e.g. "92%") as static
+     content, so a user with JS disabled or blocked, or without
+     IntersectionObserver support, sees the correct number with no animation.
+     Only once we've confirmed we're actually going to animate do we blank
+     the element to "0" and count up from there. */
   (function () {
     var els = document.querySelectorAll('.count-up');
     if (!els.length) return;
+    if (reduceMotion) return; // leave the static value alone, no motion
+    if (!('IntersectionObserver' in window)) return; // leave the static value alone
+
     function animate(el) {
-      var target = parseInt(el.getAttribute('data-target'), 10) || 0;
+      var target = parseInt(el.getAttribute('data-target'), 10);
+      if (isNaN(target)) return; // no usable target: leave the static value alone
       var suffix = el.getAttribute('data-suffix') || '';
-      if (reduceMotion) { el.textContent = target + suffix; return; }
+      el.textContent = '0' + suffix; // committed to animating now, safe to blank
       var start = performance.now();
       var duration = 900;
       function frame(now) {
@@ -57,16 +66,63 @@
       }
       requestAnimationFrame(frame);
     }
-    if ('IntersectionObserver' in window) {
-      var obs = new IntersectionObserver(function (entries, o) {
-        entries.forEach(function (e) {
-          if (e.isIntersecting) { animate(e.target); o.unobserve(e.target); }
-        });
-      }, { threshold: 0.6 });
-      els.forEach(function (el) { obs.observe(el); });
-    } else {
-      els.forEach(animate);
+
+    var obs = new IntersectionObserver(function (entries, o) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { animate(e.target); o.unobserve(e.target); }
+      });
+    }, { threshold: 0.6 });
+    els.forEach(function (el) { obs.observe(el); });
+  })();
+
+  /* ---------- case diagrams ----------
+     Each .diagram-panel starts with every [data-anim]/[data-loop] element
+     paused via CSS. When the panel scrolls into view we flip them to
+     running and count up any [data-count] values. Reduced motion, or no
+     IntersectionObserver, just shows the finished state immediately. */
+  (function () {
+    var panels = document.querySelectorAll('.diagram-panel');
+    if (!panels.length) return;
+
+    function countUp(el) {
+      if (el.dataset.done) return;
+      el.dataset.done = '1';
+      var to = Math.abs(parseFloat(el.getAttribute('data-to')) || 0);
+      var pre = el.getAttribute('data-prefix') || '';
+      var suf = el.getAttribute('data-suffix') || '';
+      if (reduceMotion) { el.textContent = pre + to + suf; return; }
+      var duration = 1100;
+      var start = performance.now();
+      function tick(now) {
+        var p = Math.min(1, (now - start) / duration);
+        var eased = 1 - Math.pow(1 - p, 3);
+        el.textContent = pre + Math.round(to * eased) + suf;
+        if (p < 1) requestAnimationFrame(tick);
+      }
+      el.textContent = pre + '0' + suf;
+      requestAnimationFrame(tick);
     }
+
+    function play(root) {
+      root.querySelectorAll('[data-anim], [data-loop]').forEach(function (el) {
+        el.style.animationPlayState = 'running';
+      });
+      root.querySelectorAll('[data-count]').forEach(countUp);
+    }
+
+    if (reduceMotion || !('IntersectionObserver' in window)) {
+      panels.forEach(play);
+      return;
+    }
+
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        play(e.target);
+        io.unobserve(e.target);
+      });
+    }, { threshold: 0.15 });
+    panels.forEach(function (p) { io.observe(p); });
   })();
 
   /* ---------- command palette ---------- */
